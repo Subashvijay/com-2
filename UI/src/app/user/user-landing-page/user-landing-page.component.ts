@@ -76,6 +76,7 @@ export class UserLandingPageComponent implements OnInit {
   logout()
   {
     localStorage.clear();
+    this.route.navigateByUrl('HOME')
   }
 
     onReset()

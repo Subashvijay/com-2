@@ -1,9 +1,9 @@
-using System;
+﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TweetAPP.Migrations
 {
-    public partial class tweetapp : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -38,17 +38,18 @@ namespace TweetAPP.Migrations
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TweetDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Likes = table.Column<int>(type: "int", nullable: false)
+                    Likes = table.Column<int>(type: "int", nullable: false),
+                    UserDetailsUserId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Tweets", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Tweets_User_UserId",
-                        column: x => x.UserId,
+                        name: "FK_Tweets_User_UserDetailsUserId",
+                        column: x => x.UserDetailsUserId,
                         principalTable: "User",
                         principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -57,9 +58,10 @@ namespace TweetAPP.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    TweetId = table.Column<int>(type: "int", nullable: false),
                     Username = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Comments = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TweetId = table.Column<int>(type: "int", nullable: true)
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -69,7 +71,7 @@ namespace TweetAPP.Migrations
                         column: x => x.TweetId,
                         principalTable: "Tweets",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -78,9 +80,9 @@ namespace TweetAPP.Migrations
                 column: "TweetId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tweets_UserId",
+                name: "IX_Tweets_UserDetailsUserId",
                 table: "Tweets",
-                column: "UserId");
+                column: "UserDetailsUserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

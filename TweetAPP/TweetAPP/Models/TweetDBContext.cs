@@ -30,7 +30,7 @@ namespace TweetAPP.Models
         /// <summary>
         /// Gets or sets user.
         /// </summary>
-        public DbSet<User> User { get; set; }
+        public DbSet<UserDetails> User { get; set; }
 
         /// <summary>
         /// Gets or sets tweets.
@@ -48,7 +48,7 @@ namespace TweetAPP.Models
         /// <param name="optionsBuilder">optionsBuilder.</param>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-           optionsBuilder.UseSqlServer(@"Data Source=LTIN233231\SQLEXPRESS;Initial Catalog=TweetDB;Persist Security Info=True;User ID=sa;Password=password-1");
+           optionsBuilder.UseSqlServer(@"Server=tcp:tweet-server.database.windows.net,1433;Initial Catalog=tweetDb;Persist Security Info=False;User ID=tweet-admin;Password=covid@2020;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
         }
     }
 }

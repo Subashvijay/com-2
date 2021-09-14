@@ -150,7 +150,7 @@ namespace TweetAPP.Service
         /// </summary>
         /// <param name="username">username.</param>
         /// <returns>response.</returns>
-        public async Task<User> GetUserProfile(string username)
+        public async Task<UserDetails> GetUserProfile(string username)
         {
             try
             {
@@ -256,7 +256,7 @@ namespace TweetAPP.Service
         /// <param name="emailId">emailId.</param>
         /// <param name="password">password.</param>
         /// <returns>response.</returns>
-        public async Task<User> UserLogin(string emailId, string password)
+        public async Task<UserDetails> UserLogin(string emailId, string password)
         {
             try
             {
@@ -280,16 +280,16 @@ namespace TweetAPP.Service
         /// </summary>
         /// <param name="users">users.</param>
         /// <returns>response.</returns>
-        public async Task<string> Register(User users)
+        public async Task<string> Register(UserDetails users)
         {
             try
             {
                 if (users != null)
                 {
                     string message = string.Empty;
-                    var validate = await this.tweetRepository.ValidateEmailId(users.EmailId);
+                    var validateMail = await this.tweetRepository.ValidateEmailId(users.EmailId);
                     var uservalidate = await this.tweetRepository.ValidateName(users.FirstName, users.Username);
-                    if (validate == null && uservalidate == null)
+                    if (validateMail == null && uservalidate == null)
                     {
                         users.Password = this.EncryptPassword(users.Password);
                         var result = await this.tweetRepository.Register(users);
@@ -304,7 +304,7 @@ namespace TweetAPP.Service
                     }
                     else
                     {
-                        if (validate != null)
+                        if (validateMail != null)
                         {
                             message = "EmailId is already used";
                         }

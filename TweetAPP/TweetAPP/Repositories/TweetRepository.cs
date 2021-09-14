@@ -134,7 +134,7 @@ namespace TweetAPP.Repositories
         /// </summary>
         /// <param name="username">username.</param>
         /// <returns>response.</returns>
-        public async Task<User> GetUserProfile(string username)
+        public async Task<UserDetails> GetUserProfile(string username)
         {
             var result = await this.dbcontext.User.Where(s => s.Username == username).FirstOrDefaultAsync();
             return result;
@@ -161,9 +161,9 @@ namespace TweetAPP.Repositories
         /// <param name="username">username.</param>
         /// <param name="password">password.</param>
         /// <returns>response.</returns>
-        public async Task<User> Login(string username, string password)
+        public async Task<UserDetails> Login(string username, string password)
         {
-            User user = await this.dbcontext.User.FirstOrDefaultAsync(e => e.Username == username && e.Password == password);
+            UserDetails user = await this.dbcontext.User.FirstOrDefaultAsync(e => e.Username == username && e.Password == password);
             if (user != null)
             {
                 return user;
@@ -191,7 +191,7 @@ namespace TweetAPP.Repositories
         /// </summary>
         /// <param name="users">users.</param>
         /// <returns>response.</returns>
-        public async Task<int> Register(User users)
+        public async Task<int> Register(UserDetails users)
         {
             this.dbcontext.User.Add(users);
             var result = await this.dbcontext.SaveChangesAsync();
@@ -227,7 +227,7 @@ namespace TweetAPP.Repositories
         /// </summary>
         /// <param name="emailId">emailId.</param>
         /// <returns>response.</returns>
-        public async Task<User> ValidateEmailId(string emailId)
+        public async Task<UserDetails> ValidateEmailId(string emailId)
         {
             var user = await this.dbcontext.User.FirstOrDefaultAsync(e => e.EmailId == emailId);
             return user;
@@ -239,7 +239,7 @@ namespace TweetAPP.Repositories
         /// <param name="firstName">firstName.</param>
         /// <param name="loginId">loginId.</param>
         /// <returns>response.</returns>
-        public async Task<User> ValidateName(string firstName, string loginId)
+        public async Task<UserDetails> ValidateName(string firstName, string loginId)
         {
             var user = await this.dbcontext.User.FirstOrDefaultAsync(e => e.FirstName == firstName || e.Username == loginId);
             return user;

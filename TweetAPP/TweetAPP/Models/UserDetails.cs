@@ -1,4 +1,4 @@
-// <copyright file="User.cs" company="PlaceholderCompany">
+// <copyright file="UserDetails.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
@@ -10,9 +10,9 @@ namespace TweetAPP.Models
     using System.ComponentModel.DataAnnotations.Schema;
 
     /// <summary>
-    /// User.
+    /// UserDetails.
     /// </summary>
-    public class User
+    public class UserDetails
     {
         /// <summary>
         /// Gets or Sets UserId.

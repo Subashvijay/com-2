@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
       confirmpassword: ['', Validators.required],
       contactnumber: ['', [Validators.required, Validators.pattern("^[6-9][0-9]{9}$")]],
       lastname: [''],
-      imagename: ['', Validators.required]
+      imagename: ['']
     });
   }
   emailValidation(emailid: HTMLInputElement) {
@@ -104,10 +104,10 @@ export class RegisterComponent implements OnInit {
         this.user.emailId = this.userForm.value["emailid"];
         this.user.password = this.userForm.value["password"];
         this.user.contactNumber = this.userForm.value["contactnumber"];
-        this.user.imageName = this.img;
+        this.user.imageName = 'temp';
         console.log(this.user)
         this.service.Register(this.user).subscribe(res => {
-          alert("Successfully registered");
+          alert(res);
           console.log(res);
           this.route.navigateByUrl('HOME');
         },

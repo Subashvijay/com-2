@@ -39,7 +39,7 @@ export class PosttweetComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.frombuilder.group({
-      tweets:['', Validators.required],
+      tweets:['', [Validators.required,Validators.maxLength(143)]],
       like:['']
     })
   }
@@ -47,6 +47,7 @@ export class PosttweetComponent implements OnInit {
   onSubmitPost(){
     this.submitted=true;
     if(this.form.invalid){
+      this.form.markAllAsTouched();
      return;
     }
       else{
@@ -61,7 +62,7 @@ export class PosttweetComponent implements OnInit {
       console.log(this.tweet)
      this.service.PostTweet(this.tweet).subscribe(res=>{
         alert("Tweet Posted Successfully")
-    this.route.navigateByUrl('USER')
+        window.location.reload();
      },
       err=>{
         alert("Failed to Post")

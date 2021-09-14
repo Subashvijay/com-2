@@ -21,16 +21,17 @@ export class ViewprofileComponent implements OnInit {
   form:FormGroup
   uname:string;
   commentslist:UserComment[];
-result:number;
-clickedButton : {[key: number] : boolean} ={};
-count:Tweet;
-todaysDataTime = new Date();
-today= new Date();
-date:string;
-text:string;
-    constructor(private route:Router,private service:TweetappService) {
-      this.Profile();
-     }
+  result:number;
+  clickedButton : {[key: number] : boolean} ={};
+  count:Tweet;
+  todaysDataTime = new Date();
+  today= new Date();
+  date:string;
+  imgLink:'https://img.icons8.com/officel/2x/person-male.png'
+  text:string;
+  constructor(private route:Router,private service:TweetappService) {
+    this.Profile();
+  }
   Profile()
   {
     this.id = Number(localStorage.getItem('UserId') || '{}') ;

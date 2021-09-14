@@ -19,7 +19,7 @@ namespace TweetAPP.Repositories
         /// </summary>
         /// <param name="users">users.</param>
         /// <returns>response.</returns>
-        Task<int> Register(User users);
+        Task<int> Register(UserDetails users);
 
         /// <summary>
         /// Login.
@@ -27,7 +27,7 @@ namespace TweetAPP.Repositories
         /// <param name="Username">emailId.</param>
         /// <param name="password">password.</param>
         /// <returns>response.</returns>
-        Task<User> Login(string Username, string password);
+        Task<UserDetails> Login(string Username, string password);
 
         /// <summary>
         /// GetAllTweets.
@@ -77,7 +77,7 @@ namespace TweetAPP.Repositories
         /// </summary>
         /// <param name="emailId">emailId.</param>
         /// <returns>response.</returns>
-        Task<User> ValidateEmailId(string emailId);
+        Task<UserDetails> ValidateEmailId(string emailId);
 
         /// <summary>
         /// ValidateName.
@@ -85,7 +85,7 @@ namespace TweetAPP.Repositories
         /// <param name="firstName">firstName.</param>
         /// <param name="loginId">loginId.</param>
         /// <returns>response.</returns>
-        Task<User> ValidateName(string firstName, string loginId);
+        Task<UserDetails> ValidateName(string firstName, string loginId);
 
         /// <summary>
         /// Likes.
@@ -124,6 +124,6 @@ namespace TweetAPP.Repositories
         /// </summary>
         /// <param name="username">username.</param>
         /// <returns>response.</returns>
-        Task<User> GetUserProfile(string username);
+        Task<UserDetails> GetUserProfile(string username);
     }
 }

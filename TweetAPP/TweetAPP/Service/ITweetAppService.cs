@@ -19,7 +19,7 @@ namespace TweetAPP.Service
         /// </summary>
         /// <param name="users">users.</param>
         /// <returns>response.</returns>
-        Task<string> Register(User users);
+        Task<string> Register(UserDetails users);
 
         /// <summary>
         /// Login.
@@ -27,7 +27,7 @@ namespace TweetAPP.Service
         /// <param name="Username">emailId.</param>
         /// <param name="password">password.</param>
         /// <returns>response.</returns>
-        Task<User> UserLogin(string Username, string password);
+        Task<UserDetails> UserLogin(string Username, string password);
 
         /// <summary>
         /// GetAllTweets.
@@ -110,7 +110,7 @@ namespace TweetAPP.Service
         /// </summary>
         /// <param name="username">username.</param>
         /// <returns>response.</returns>
-        Task<User> GetUserProfile(string username);
+        Task<UserDetails> GetUserProfile(string username);
 
     }
 }

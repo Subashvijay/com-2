@@ -44,13 +44,13 @@ namespace TweetAPP.Controller
         }
 
         /// <summary>
-        /// Register User.
+        /// Register UserDetails.
         /// </summary>
         /// <param name="user">user.</param>
         /// <returns>response.</returns>
         [HttpPost]
         [Route("register")]
-        public async Task<IActionResult> Register([FromBody] User user)
+        public async Task<IActionResult> Register([FromBody] UserDetails user)
         {
             try
             {
@@ -65,7 +65,7 @@ namespace TweetAPP.Controller
         }
 
         /// <summary>
-        /// Login User.
+        /// Login UserDetails.
         /// </summary>
         /// <param name="emailId">emailID.</param>
         /// <param name="password">password.</param>

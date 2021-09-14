@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.userForm = this.frombuilder.group({
         username:['',Validators.required],
-        password:['',[Validators.required,Validators.pattern("^[A-Za-z]{7,}[!@#$%^&*]")]],
+        password:['',[Validators.required,Validators.min(7)]],
       });
   }
 

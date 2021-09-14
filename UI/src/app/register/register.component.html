@@ -23,15 +23,7 @@
                         <div class="card-body">
                             <div class="wrapper">
                                 <div class="inner">
-                                    <div class="text-center">
-                                        <p *ngIf="prePasswordCheck"
-                                            style="color: red; text-transform: capitalize;font-size: 14px;letter-spacing: 1px">
-                                            Enter <b>password</b> first</p>
-
-                                        <p *ngIf="emailValid"
-                                            style="color: red; text-transform: capitalize;font-size: 14px;letter-spacing: 1px">
-                                            Enter Valid <b>Email</b> Id</p>
-                                    </div>
+                                    
                                     <form [formGroup]="userForm" (ngSubmit)="onSubmitUser()" align="center">
                                         <div class="brand-wrapper">
                                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdmWo9WANUCdU-HlxcUuab7FyN-t9AuJBMmSnRYhsXSACoNf-GNYscIoCKFpxxSht9ZQ&usqp=CAU"
@@ -113,10 +105,15 @@
                                                 <b>Password</b> didn't matched
                                             </p>
                                         </div>
-                                        <div class="form-group mb-4">
-                                            <label>ProfilePic</label>
-                                            <input type="file" formControlName="imagename" name="imagename"
-                                                (change)="fileEvent($event)" />
+                                        
+                                        <div class="text-center">
+                                            <p *ngIf="prePasswordCheck"
+                                                style="color: red; text-transform: capitalize;font-size: 14px;letter-spacing: 1px">
+                                                Enter <b>password</b> first</p>
+    
+                                            <p *ngIf="emailValid"
+                                                style="color: red; text-transform: capitalize;font-size: 14px;letter-spacing: 1px">
+                                                Enter Valid <b>Email</b> Id</p>
                                         </div>
                                         <input name="login" id="login" class="btn btn-block login-btn mb-4"
                                             type="submit" value="REGISTER">

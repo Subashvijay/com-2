@@ -13,7 +13,7 @@ const Requestheaders={headers:new HttpHeaders({
   providedIn: 'root'
 })
 export class TweetappService {
-  url:string='http://localhost:63301/api/v1.0/tweets/'
+  url:string='https://tweetappcom2.azurewebsites.net/api/v1.0/tweets/'
   constructor(private http:HttpClient) { }
   public Register(user:User):Observable<String>
   {   

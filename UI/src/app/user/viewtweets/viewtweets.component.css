@@ -37,7 +37,7 @@ button:focus {
 
 }
 .card-header{
-    background-image: linear-gradient(to right, #b7d4f0, #1f5c96);
+    background-color:slategray;
 
 }
 
